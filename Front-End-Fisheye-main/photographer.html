@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <link rel="icon" type="image/png" href="./assets/icons/favorite-24px 1.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Fisheye - photographe </title>
+</head>
+
+<body>
+  <header>
+    <img src="assets/images/logo.png" class="logo" />
+  </header>
+  <main id="main">
+    <div class="photographDetils">
+    </div>
+
+    <!-- <div class="mediaFilter ma-y">
+      <label><b>Trier par</b>&nbsp; &nbsp; &nbsp;</label>
+      <select name="media" class="mediaFilterOption">
+        <option value="volvo">Popularité</option>
+        <option value="saab">Date</option>
+        <option value="opel">Titre</option>
+      </select>
+    </div> -->
+    <section aria-label="media's filter">
+      <div class="dropdown">
+        <button id="demo" class="filter" data-value='likes' onclick="dropbtn(this);">Popularity<span><img class="iconMenu"
+              src="./assets/icons/downArroew.png" alt=""></span></button>
+        <div id="myDropdown" class="filterDropdown" style="display:none;">
+          <a href="#about" id="popularite" class="filter__custom-option" data-value='likes' onclick="dropbtnVal(this);filterSort('likes')" style="display:none">popularity</a>
+          <div class="line"></div>
+          <a href="#about" id="date" class="filter__custom-option" data-value='date'  onclick="dropbtnVal(this);filterSort('date')">Date</a>
+          <div class="line"></div>
+          <a href="#about" id="titleMedia" class="filter__custom-option" data-value='title' onclick="dropbtnVal(this);filterSort('title')">Title</a>
+        </div>
+      </div>
+    </section>
+    <!-- lightbox -->
+    <div class="mediaList">
+      <div class="ma-y">
+        <div class="row mediaListView">
+        </div>
+        <div id="myModal" class="modal">
+          <span class="close cursor" onclick="closeModal()">&times;</span>
+          <div class="modal-content">
+            <div class="mySlides">
+              <div class="numbertext"></div>
+              <!-- <video class="mediaVideo slider-img" controls="" >
+                <source src="" type="video/mp4" id="slider-video-url">
+              </video>
+              <img src="" style="width:100%" id="slider-img-url"> -->
+              <div id="showSlider">
+              </div>
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+  <div id="contact_modal">
+    <div class="modal">
+      <header>
+        <h2>Contactez-moi</h2>
+        <img src="assets/icons/close.svg" onclick="closeModal()" />
+      </header>
+      <form>
+        <div>
+          <label>Prénom</label>
+          <input />
+        </div>
+        <button class="contact_button">Envoyer</button>
+      </form>
+    </div>
+  </div>
+  <div id="display">
+    <div class="display_current_profile"></div>
+  </div>
+  <!-- <section class="contact__Form" style="display:none" role="region" aria-label="Contact form">
+    <div class="modal__content" aria-labelledby="contact" role="dialog">
+      <div class="form__header">
+        <h1 class="modal__head">
+          Contactez-moi
+        </h1>
+        <span class="modal__close" onclick="toggle()">
+          <img class="close__img" src="./assets/icons/close.svg" alt="">
+        </span>
+      </div>
+      <div class="modal__body">
+        <form name="contact" method="get" class="form" onsubmit="return checkInputValidation();">
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
+            <label for="firstname" class="form__label">Prénom</label>
+            <input class="form__text" type="text" id="firstname" name="firstname" minlength="2" required
+              aria-required="true" placeholder="John" />
+            <span class="errorMessage"></span>
+          </div>
+
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
+            <label for="lastname" class="form__label">Nom</label>
+            <input class="form__text" type="text" id="lastname" name="lastname" minlength="2" required
+              aria-required="true" placeholder="Doe" />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data"
+            data-error="Veuillez saisir un email valide (Ex: john.doe@gmail.com, johndoe@gmail.com)">
+            <label for="email" class="form__label">E-mail</label>
+            <input class="form__text" type="email" id="email" name="email" required aria-required="true"
+              placeholder="johndoe@gmail.com, john.doe@gmail.com, ..." />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data" data-error="Veuillez saisir votre message.">
+            <label for="textArea" class="form__label">Votre message</label>
+            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10" required
+              aria-required="true" placeholder="Bonjour..."></textarea>
+            <span class="errorMessage"></span>
+          </div>
+          <input class="form__submitButton" type="submit" onclick="formSubmit()" value="Send" />
+        </form>
+      </div>
+    </div>
+  </section> -->
+  <section id="modalForm" class="modalForm" role="region" aria-label="Contact form">
+    <div class="modal__content" aria-labelledby="contact" role="dialog">
+      <div class="form__header">
+        <h1 class="modal__head">
+        </h1>
+        <span class="modal__close" role="button" aria-label="Close Contact Form" onclick="toggle()">
+          <img class="close__img" src="./assets/icons/close.svg" alt="">
+        </span>
+      </div>
+
+      <div class="modal__body">
+        <form name="contact" >
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
+            <label for="firstname" class="form__label">Prénom</label>
+            <input class="form__text" type="text" id="firstname" name="firstname" minlength="2" required
+              aria-required="true" placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+
+          <div class="form__data" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
+            <label for="lastname" class="form__label">Nom</label>
+            <input class="form__text" type="text" id="lastname" name="lastname" minlength="2" required
+              aria-required="true" placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data"
+            data-error="Veuillez saisir un email valide (Ex: john.doe@gmail.com, johndoe@gmail.com)">
+            <label for="email" class="form__label">E-mail</label>
+            <input class="form__text" type="email" id="email" name="email" required aria-required="true"
+              placeholder="" />
+            <span class="errorMessage"></span>
+          </div>
+          <div class="form__data" data-error="Veuillez saisir votre message.">
+            <label for="textArea" class="form__label">Votre message</label>
+            <textarea class="form__text-area" name="textArea" id="textArea" cols="30" rows="10" required
+              aria-required="true" placeholder=""></textarea>
+            <span class="errorMessage"></span>
+          </div>
+          <input class="form__submitButton" onclick="formSubmit()" type="button" value="Send" />
+          <button  class="form__submitButton" type="button" id="reset" onclick="Reset()"> Reset</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <div class="total__count">
+    <div class="total__likes"></div>
+      <div class="price"></div>
+    <!-- <div class="total__count">
+  <span>666 &#9829; </span>
+    <span id="price">400 &#128; /day</span>
+    </div> -->
+  </div>
+  <script src="scripts/factories/Photographer.js"></script>
+  <script src="scripts/service/api.js"></script>
+  <script src="scripts/pages/photographer.js"></script>
+  <!-- <script src="/scripts/utils/contactForm.js"></script> -->
+</body>
+
+</html>
